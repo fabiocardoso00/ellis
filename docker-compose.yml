@@ -1,0 +1,20 @@
+# docker-compose.yml
+version: '3.8' # Especifica a versão do docker-compose
+
+services:
+# Serviço da sua aplicação FastAPI
+  api:
+    
+    build: . # Constrói a imagem a partir do Dockerfile no diretório atual
+    container_name: api # Nomeia o contêiner   
+    ports:
+      - "8000:8000" # Mapeia a porta 8000 do host para a porta 8000 do contêiner
+      
+    
+    volumes:
+      - .:/app # Monta o diretório atual no diretório /app do contêiner
+              # Isso é ótimo para desenvolvimento, pois as alterações no código
+              # são refletidas automaticamente no contêiner devido ao --reload do 
+              # uvicorn
+
+    
